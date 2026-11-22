@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — Phishing Awareness Trainer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="admin">
+  <div class="topbar">
+    <strong data-i18n="appTitle">Phishing Awareness Trainer</strong>
+    <span class="spacer"></span>
+    <span id="roleBadge" class="badge"></span>
+    <button class="btn-lang" onclick="toggleLang()">EN / العربية</button>
+    <button onclick="logout()" data-i18n="logout">Logout</button>
+  </div>
+
+  <div class="page">
+
+    <!-- ADMIN ONLY: manage users -->
+    <div id="userSection" class="box hidden">
+      <h2 data-i18n="manageUsers">Manage users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="name">Name</th>
+            <th data-i18n="email">Email</th>
+            <th data-i18n="role">Role</th>
+            <th data-i18n="level">Level</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+      </table>
+
+      <h3 style="margin-top:24px;" data-i18n="addUser">Add a user</h3>
+      <div class="form-grid">
+        <div><label for="newName" data-i18n="name">Name</label><input id="newName"></div>
+        <div><label for="newEmail" data-i18n="email">Email</label><input id="newEmail" type="email"></div>
+        <div><label for="newPass" data-i18n="password">Password</label><input id="newPass" type="password"></div>
+        <div>
+          <label for="newRole" data-i18n="role">Role</label>
+          <select id="newRole">
+            <option value="learner" data-i18n="roleLearner">Student / Employee</option>
+            <option value="admin" data-i18n="roleAdmin">Admin</option>
+            <option value="content" data-i18n="roleContent">Content Manager</option>
+            <option value="security" data-i18n="roleSecurity">Security Manager</option>
+          </select>
+        </div>
+      </div>
+      <p><button class="btn-blue" onclick="addUser()" data-i18n="addUserBtn">Add user</button></p>
+      <p id="userMsg" class="msg"></p>
+    </div>
+
+    <!-- ADMIN + CONTENT MANAGER: add scenarios -->
+    <div id="scenarioSection" class="box hidden">
+      <h2 data-i18n="addScenario">Add a scenario</h2>
+      <div class="form-grid">
+        <div>
+          <label for="scLevel" data-i18n="level">Level</label>
+          <select id="scLevel">
+            <option value="Easy"></option>
+            <option value="Medium"></option>
+            <option value="Hard"></option>
+          </select>
+        </div>
+        <div>
+          <label for="scCategory" data-i18n="category">Category</label>
+          <select id="scCategory"></select>
+        </div>
+        <div>
+          <label for="scType" data-i18n="type">Type</label>
+          <select id="scType">
+            <option value="phishing" data-i18n="typePhish">Phishing</option>
+            <option value="legit" data-i18n="typeLegit">Legitimate</option>
+          </select>
+        </div>
+        <div><label for="scSender" data-i18n="sender">Sender address</label><input id="scSender"></div>
+        <div><label for="scTitleEn">Title (English)</label><input id="scTitleEn"></div>
+        <div><label for="scTitleAr" dir="rtl">العنوان (بالعربية)</label><input id="scTitleAr" dir="rtl"></div>
+        <div class="full"><label for="scBodyEn">Body (English)</label><textarea id="scBodyEn" rows="3"></textarea></div>
+        <div class="full"><label for="scBodyAr" dir="rtl">النص (بالعربية)</label><textarea id="scBodyAr" rows="3" dir="rtl"></textarea></div>
+        <div class="full"><label for="scReasonEn">Explanation (English)</label><textarea id="scReasonEn" rows="2"></textarea></div>
+        <div class="full"><label for="scReasonAr" dir="rtl">الشرح (بالعربية)</label><textarea id="scReasonAr" rows="2" dir="rtl"></textarea></div>
+      </div>
+      <p><button class="btn-blue" onclick="addScenario()" data-i18n="addScenarioBtn">Add scenario</button></p>
+      <p id="scMsg" class="msg"></p>
+
+      <h3 style="margin-top:24px;" data-i18n="allScenarios">All scenarios</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th data-i18n="level">Level</th>
+              <th data-i18n="category">Category</th>
+              <th data-i18n="type">Type</th>
+              <th data-i18n="subject">Subject</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="scenarioTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
 
