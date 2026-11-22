@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — Phishing Awareness Trainer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+  <div class="topbar">
+    <strong data-i18n="appTitle">Phishing Awareness Trainer</strong>
+    <span class="spacer"></span>
+    <button class="btn-lang" onclick="toggleLang()">EN / العربية</button>
+    <button onclick="logout()" data-i18n="logout">Logout</button>
+  </div>
+
+  <div class="page">
+    <h2 data-i18n="dashTitle">Security dashboard</h2>
+
+    <div class="cards">
+      <div class="card"><div data-i18n="totalAttempts">Total attempts</div><div id="totalAttempts" class="big">0</div></div>
+      <div class="card"><div data-i18n="correctRate">Correct rate</div><div id="correctRate" class="big">0%</div></div>
+      <div class="card"><div data-i18n="weakestTopic">Weakest topic</div><div id="weakestTopic" class="big">—</div></div>
+    </div>
+
+    <div class="box">
+      <h3 data-i18n="accuracyByCategory">Accuracy by phishing category</h3>
+      <div id="bars"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-blue" onclick="loadDemoData()" data-i18n="demoData">Load demo data</button>
+      <button class="btn-red" onclick="resetAttempts()" data-i18n="resetData">Reset all results</button>
+    </div>
+  </div>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
+
